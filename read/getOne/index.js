@@ -9,10 +9,10 @@ exports.handler = async (event) => {
     try {
         let data;
         if(id) {
-            const list = await peopleModel.query('id').eq(id).limit(1).exect();
+            const list = await peopleModel.query('id').eq(id).limit(1).exec();
             data = list;
         } else {
-            data = await peopleModel.scan().exect();
+            data = await peopleModel.scan().exec();
         }
 
     } catch (e) {
