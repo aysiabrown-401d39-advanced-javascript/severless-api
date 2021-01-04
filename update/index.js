@@ -1,13 +1,13 @@
 'use strict';
 
-const peopleModel = require('../schemas/people.schema');
+const peopleModel = require('./people.schema');
 
-exports.handlers = async (event) => {
+exports.handler = async (event) => {
     const {name, age, gender} = JSON.parse(event.body);
     const id = event.pathParameters.id;
     try {
         if(id) {
-            const data =  await peopleModel.update({"id": id, name, age, gender});
+            var data =  await peopleModel.update({"id": id, "name": name, "age": age, "gender": gender});
         }
        return {
            statusCode: 200,
@@ -16,7 +16,7 @@ exports.handlers = async (event) => {
     } catch (e) {
         return {
             statusCode: 500,
-            body: JSON.stringify(e)
+            response: JSON.stringify(e)
         }
 
     }

@@ -1,7 +1,7 @@
 'use strict';
 
 const uuid = require('uuid').v4;
-const peopleModel = require('../schemas/people.schema');
+const peopleModel = require('./people.schema');
 
 exports.handler = async (event) => {
     const {name, age, gender} = JSON.parse(event.body);

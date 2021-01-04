@@ -1,6 +1,7 @@
 'use strict';
 
-const peopleModel = require('../schemas/people.schema');
+const { stringify } = require('uuid');
+const peopleModel = require('./people.schema');
 
 exports.handler = async (event) => {
     const id = event.pathParameters.id;
@@ -8,11 +9,11 @@ exports.handler = async (event) => {
     try {
         let del;
         if(id) {
-            del = await peopleModel.query('id').eq(id).limit(1).exec();
-            del.delete();
-            console.log('Delete was successful!')
-        } else {
-            del = await peopleModel.scan().exec();
+            del = await peopleModel.delete(id);
+        } 
+        return {
+            statusCode: 200,
+            body: 'Deletion was succcessful!'
         }
     } catch(e) {
         return {

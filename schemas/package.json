@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/aysiabrown-401d39-advanced-javascript/severless-api#readme",
   "dependencies": {
-    "dynamoose": "^2.5.0"
+    "dynamoose": "^2.5.0",
+    "uuid": "^8.3.2"
   }
 }

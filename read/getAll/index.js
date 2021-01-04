@@ -1,10 +1,10 @@
 'use strict';
 
-const peopleModel = require('../../schemas/people.schema');
+const peopleModel = require('./people.schema');
 
 exports.handler = async (event) => {
     try {
-        let data = peopleModel.query('name');
+        let data = await peopleModel.scan().exec();
         return {
             statusCode: 200,
             body: JSON.stringify(data)
